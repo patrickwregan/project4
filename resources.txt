@@ -1,0 +1,10 @@
+resources
+
+
+http://betterexplained.com/articles/how-to-optimize-your-site-with-gzip-compression/
+
+https://gist.github.com/scottjehl/87176715419617ae6994
+
+www.w3schools.com
+
+http://converticon.com/

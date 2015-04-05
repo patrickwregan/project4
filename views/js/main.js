@@ -424,7 +424,8 @@ var resizePizzas = function(size) {
   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldwidth = elem.offsetWidth;
-    var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
+    // change all querySelectorAll to getElementsByClassName
+    var windowwidth = document.getElementsByClassName("#randomPizzas").offsetWidth;
     var oldsize = oldwidth / windowwidth;
 
     // TODO: change to 3 sizes? no more xl?
@@ -450,11 +451,23 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    // save document.getElementsByClassName in a variable so I only have to do the lookup once
+    var randomPizzaContainerList = document.getElementsByClassName('randomPizzaContainer');
+    // compute dx and newwidth outside the loop from the 0th pizza since all pizzas are the same size
+    // also place dx inside the computation for newwidth so I don't have to create another variable
+    var newwidth = (randomPizzaContainerList[0].offsetWidth + determineDx(randomPizzaContainerList[0], size)) + 'px';
+    for (var i = 0; i < randomPizzaContainerList.length; i++) {
+
+      randomPizzaContainerList[i].style.width = newwidth;
+ }
+    /*
+    for (var i = 0; i < document.getElementsByClassName(".randomPizzaContainer").length; i++) {
+      var dx = determineDx(document.getElementsByClassName(".randomPizzaContainer")[i], size);
+      var newwidth = (document.getElementsByClassName(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      document.getElementsByClassName(".randomPizzaContainer")[i].style.width = newwidth;
+
     }
+    */
   }
 
   changePizzaSizes(size);
@@ -502,8 +515,9 @@ function updatePositions() {
   frame++;
 
   window.performance.mark("mark_start_frame");
-
+  // use getElementsByClassName rather than querySelectorAll
   var items = document.getElementsByClassName('mover');
+  // calculate scrollInfo once rather than for each pizza
   var scrollInfo = document.body.scrollTop/1250;
   var phaseArray = [];
   // calculate Math.sin 5 times rather than once per pizza.
