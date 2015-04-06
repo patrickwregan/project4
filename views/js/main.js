@@ -515,13 +515,17 @@ function updatePositions() {
   var scrollInfo = document.body.scrollTop/1250;
   var phaseArray = [];
   // calculate Math.sin 5 times rather than once per pizza.
+
   for (var m = 0; m < 5; m++)
   {
 
-    phaseArray.push(Math.sin(scrollInfo + m));
+    phaseArray.push(100*Math.sin(scrollInfo + m));
   }
+
   for (var i = 0; i < items.length; i++) {
-    items[i].style.left = items[i].basicLeft + 100 * phaseArray[i%5] + 'px';
+    items[i].style.left = items[i].basicLeft +  phaseArray[i%5] + 'px';
+
+
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.

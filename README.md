@@ -1,9 +1,8 @@
 for index.html I put:
 
-<link href="css/style.css" rel="stylesheet">
+css/style.css
 
-<link href="css/print.css" rel="stylesheet" media="print">
-<link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+css/print.css
 
 at the bottom of the index.html file.
 I removed the google font as it has very little effect on the appearance of the site.
