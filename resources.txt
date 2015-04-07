@@ -8,3 +8,5 @@ https://gist.github.com/scottjehl/87176715419617ae6994
 www.w3schools.com
 
 http://converticon.com/
+
+http://www.howtocreate.co.uk/tutorials/javascript/browserwindow

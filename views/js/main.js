@@ -461,7 +461,7 @@ var resizePizzas = function(size) {
     for (var i = 0; i < randomPizzaContainerList.length; i++) {
 
       randomPizzaContainerList[i].style.width = newwidth;
- }
+    }
   }
 
   changePizzaSizes(size);
@@ -546,8 +546,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  // on my screen the maximum pizzas that can show is 6 rows * 8 columns = 48 pizzas
-  for (var i = 0; i < 48; i++) {
+
+  /*
+  I am using window.innerHeight to get the actual
+  dimensions of the screen then computing the number of pizzas needed from this
+  Note:
+    I left the horizontal number to be always 8 as I thought this was required.
+  */
+  var upperLimit = Math.floor(window.innerHeight/100) * 8;
+
+  for (var i = 0; i < upperLimit; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";

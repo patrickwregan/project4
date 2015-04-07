@@ -20,6 +20,12 @@ for all functions:
 
 I changed all relevant querySelectorAll to getElementsByClassName
 
+for document.addEventListener
+
+I calculated the height of the window from window.innerHeight so as to make the
+number of rows fit in the window. I left the number of columns the same as this
+seems to be part of the assignment.
+
 for updatePositions:
 
 I pulled calculation of sine out of the the inner for loop of the updatePositions function.
@@ -33,6 +39,7 @@ I computed dx and newwidth outside the loop from the 0th pizza since all pizzas 
 I also placed dx inside the computation for newwidth so I don't have to create another variable
 
 for determineDx
+
 I changed querySelectorAll to getELementById
 
 Steps to run the project
